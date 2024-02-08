@@ -1,0 +1,37 @@
+<div class="container">
+  <h1><%= current_page.title %></h1>
+  <%= content :option %>
+
+  <% if has_content?(:image) %>
+    <%= content.image_tag :image, {}, { class: "img-fluid" } %>
+  <% end %>
+
+  <%= content :headline %>
+  <%= content.text :headline %>
+  <div class="col-12">
+    <blockquote>
+      <%= simple_format content(:excerpt) %>
+    </blockquote>
+  </div>
+  <div class="col-12">
+    <article>
+      <%= content.html :body %>
+    </article>
+  </div>
+
+  <%= current_spina_account.content :line %>
+
+  <% repeater current_spina_account.content(:repeater) do |repeater_content| %>
+    <%= repeater_content.content :line %>
+  <% end %>
+
+  <% images :image_collection do |image| %>
+    <%= content.image_tag image, resize_to_fill: [50, 50] %>
+  <% end %>
+
+  <div class="row">
+    <% repeater :repeater do |project| %>
+      <%= render "demo/pages/project", project: project %>
+    <% end %>
+  </div>
+</div>

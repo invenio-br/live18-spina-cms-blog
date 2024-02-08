@@ -1,0 +1,9 @@
+<div class="col-12 col-md-4">
+  <div class="card">
+    <%= project.content.image_tag :image, { resize_to_fill: [286, 180] }, { class: "card-img-top" } %>
+
+    <div class="card-body">
+      <%= project.content.html :line %>
+    </div>
+  </div>
+</div>
